@@ -1,0 +1,47 @@
+#搭建nfs服务
+yum install nfs-utils
+systemctl enable nfs-server
+systemctl start nfs-server
+mkdir /home/nfs  *(rw,async,no_root_squash)
+#服务自检命令
+exportfs -arv
+systemctl restart nfs-server
+
+
+安装运行 docker-registry
+docker pull registry
+docker run -d -p 5000:5000 --restart=always --name registry registry
+docker run -d \
+    -p 5000:5000 \
+    -v /opt/data/registry:/var/lib/registry \
+    registry
+docker image ls
+docker tag ubuntu:latest 127.0.0.1:5000/ubuntu:latest
+docker image ls
+docker push 127.0.0.1:5000/ubuntu:latest
+curl 127.0.0.1:5000/v2/_catalog
+docker image rm 127.0.0.1:5000/ubuntu:latest
+docker pull 127.0.0.1:5000/ubuntu:latest
+docker image ls
+/etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）
+tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://hub-mirror.c.163.com"],
+  "insecure-registries": [
+    "docker.registry:5000"
+  ]
+}
+EOF
+systemctl daemon-reload
+systemctl restart docker
+cat << EOF >/tmp/test_cat_and_EOF_by_comexchan-cnblogs-com_1
+测试cat结合EOF实现文件的覆盖或者新增
+EOF
+cat << EOF >> /tmp/test_cat_and_EOF_by_comexchan-cnblogs-com_2
+测试cat结合EOF实现文件的追加[这是第2次.追加部分文字]http://comexchan.cnblogs.com/
+EOF
+
+
+cat << EOF >> /etc/hosts
+192.168.72.100 docker.registry
+EOF

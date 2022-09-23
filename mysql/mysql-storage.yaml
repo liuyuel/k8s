@@ -1,0 +1,142 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: ${DOMAIN_NAME}-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}001
+  labels:
+    name: ${DOMAIN_NAME}001
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}001
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}002
+  labels:
+    name: ${DOMAIN_NAME}002
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}002
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}003
+  labels:
+    name: ${DOMAIN_NAME}003
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}003
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}004
+  labels:
+    name: ${DOMAIN_NAME}004
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}004
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}005
+  labels:
+    name: ${DOMAIN_NAME}005
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}005
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}006
+  labels:
+    name: ${DOMAIN_NAME}006
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}006
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}007
+  labels:
+    name: ${DOMAIN_NAME}007
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}007
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}008
+  labels:
+    name: ${DOMAIN_NAME}008
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}008
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ${DOMAIN_NAME}009
+  labels:
+    name: ${DOMAIN_NAME}009
+spec:
+  nfs:
+    path: /nfsdata/${DOMAIN_NAME}009
+    server: ${NFS_IP}
+  accessModes: [ReadWriteMany,ReadWriteOnce]
+  storageClassName: ${DOMAIN_NAME}-storage
+  capacity:
+    storage: 1Gi
+---
