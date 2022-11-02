@@ -1,13 +1,4 @@
-# C:\Users\yueliuk\AppData\Local\Google\Chrome\Application\chrome.exe  --proxy-server=127.0.0.1:8080  --ignore-certificate-errors
 
-# https://admin.baitoujia.com.cn/bax/static/img/logo_mini.ef8c25e.png HTTP/2.0
-#      << HTTP/2.0 200 OK 15.6k
-# 200
-# 127.0.0.1:63655: POST https://admin.baitoujia.com.cn/api/baxter/menu/getMenusList HTTP/2.0
-#      << HTTP/2.0 200 OK 9.6k
-# 200
-# 127.0.0.1:63655: POST https://admin.baitoujia.com.cn/api/baxter/dictionary/getTagList
-# mitmdump -s E:\pythonProject\k8s\mitmproxy/auto_spider.py
 from mitmproxy import ctx
 import re
 
@@ -49,7 +40,3 @@ def response(flow):
     # info(str(response.cookies))
     # # 打印响应报文内容
     # info(str(response.text))
-
-#
-# if __name__ == '__main__':
-#     print(len(re.findall('http.*ap1i', 'https://admin.baitoujia.com.cn/api/baxter/menu/getMenusList')))
