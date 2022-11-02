@@ -1,48 +1,48 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: isoftstone-mysql
+  name: mydomain-mysql
 spec:
-  serviceName: isoftstone-mysql
+  serviceName: mydomain-mysql
   replicas: 3
   selector:
     matchLabels:
-      app: isoftstone-mysql
+      app: mydomain-mysql
   template:
     metadata:
       labels:
-        app: isoftstone-mysql
+        app: mydomain-mysql
     spec:
       containers:
-      - name: isoftstone-mysql
+      - name: mydomain-mysql
         image: ${REGISTRY_IP}:5000/mysql:5.7
         ports:
         - containerPort: 3306
         env:
         - name: MYSQL_ACC_USER
-          value: isoftstoneadmin
+          value: mydomainadmin
         - name: MYSQL_ACC_PASSWD
           value: "123456"
         - name: MYSQL_SYNC_USER
-          value: isoftstoneslave
+          value: mydomainslave
         - name: MYSQL_SYNC_PASSWD
           value: "123456"
         - name: MYSQL_MASTER_ADDR
-          value: isoftstone-mysql-0.isoftstone-mysql
+          value: mydomain-mysql-0.mydomain-mysql
         - name: MYSQL_SYNC_FILE
-          value: isoftstone.000002
+          value: mydomain.000002
         - name: MYSQL_SYNC_POS
           value: "321"
         volumeMounts:
-        - name: isoftstone-data
+        - name: mydomain-data
           mountPath: /var/lib/mysql
           readOnly: false
   volumeClaimTemplates:
   - metadata:
-      name: isoftstone-data
+      name: mydomain-data
     spec:
       accessModes: [ "ReadWriteOnce"]
-      storageClassName: "isoftstone-storage"
+      storageClassName: "mydomain-storage"
       resources:
         requests:
           storage: 1Gi

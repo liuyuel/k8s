@@ -8,9 +8,9 @@
 # this is only for the mysqld standalone daemon
 [mysqld]
 # skip-networking
-log-bin=isoftstone
+log-bin=mydomain
 server-id=111
-binlog_do_db=isoftstone
+binlog_do_db=mydomain
 
 # Galera-related settings
 [galera]

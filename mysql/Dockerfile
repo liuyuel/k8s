@@ -8,7 +8,7 @@ RUN sed -i 's/https:\/\/dl-cdn.alpinelinux.org/http:\/\/mirrors.tuna.tsinghua.ed
 RUN apk update && apk add mysql mysql-client bash
 
 # 拷贝数据库数据文件
-COPY isoftstone.sql /
+COPY mydomain.sql /
 
 # 拷贝配置文件
 COPY mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
